@@ -128,4 +128,4 @@ fig.add_scatter3d(name='points', x=df['x'], y=df['y'], z=df['z'], mode="markers"
 #fig.show()
 
 # Export the graph to an html page
-ply.offline.plot(fig, validate = False, filename='sphere.html', auto_open=True)
+ply.offline.plot(fig, validate = False, filename='index.html', auto_open=True)
