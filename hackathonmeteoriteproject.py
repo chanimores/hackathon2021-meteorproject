@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 HackathonMeteoriteProject.ipynb
-
 File was originally created on Colaboratory.
 
-```
-# This is formatted as code
-```
-
-# Meteorite Plotting Project
+## Meteorite Plotting Project
 
 This project was created as part of the McGill Physics 2021 Hackathon.
 
@@ -129,5 +124,8 @@ df = pd.DataFrame(data=d)
 # Add to graph
 fig.add_scatter3d(name='points', x=df['x'], y=df['y'], z=df['z'], mode="markers", marker=dict(size=1.5, color='palegreen'))
 
-# Show Graph
-fig.show()
+# Show Graph (for testing purposes)
+#fig.show()
+
+# Export the graph to an html page
+ply.offline.plot(fig, validate = False, filename='sphere.html', auto_open=True)
