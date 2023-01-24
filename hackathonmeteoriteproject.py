@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 HackathonMeteoriteProject.ipynb
 File was originally created on Colaboratory.
@@ -28,7 +27,11 @@ y = np.outer(np.sin(theta),np.sin(phi))
 z = np.outer(np.ones(100),np.cos(phi))
 
 # Creates the sphere surface
-data = ply.graph_objs.Surface(x=x, y=y, z=z, colorscale='teal')
+data = ply.graph_objs.Surface(x=x, y=y, z=z, colorscale='teal', contours=ply.graph_objs.surface.Contours(
+        x=ply.graph_objs.surface.contours.X(highlight=False),
+        y=ply.graph_objs.surface.contours.Y(highlight=False),
+        z=ply.graph_objs.surface.contours.Z(highlight=False),
+    ))
 
 # Remove axes
 noaxis=dict(showbackground=False,
@@ -122,7 +125,15 @@ d = {'x': x_conv, 'y':y_conv, 'z': z_conv}
 df = pd.DataFrame(data=d)
 
 # Add to graph
-fig.add_scatter3d(name='points', x=df['x'], y=df['y'], z=df['z'], mode="markers", marker=dict(size=1.5, color='palegreen'))
+fig.add_scatter3d(name='points', x=df['x'], y=df['y'], z=df['z'], mode="markers",
+                  marker=dict(size=1.5, color='palegreen'))
+
+fig.update_layout(dict(width=1500, height=700),
+        scene = dict(
+            xaxis = dict(visible=False),
+            yaxis = dict(visible=False),
+            zaxis =dict(visible=False)
+        ))
 
 # Show Graph (for testing purposes)
 #fig.show()
